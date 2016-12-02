@@ -1,0 +1,570 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A71F69AA1C7475D2009781FB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69A91C7475D2009781FB /* main.m */; };
+		A71F69AD1C7475D2009781FB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69AC1C7475D2009781FB /* AppDelegate.m */; };
+		A71F69B01C7475D2009781FB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69AF1C7475D2009781FB /* ViewController.m */; };
+		A71F69B31C7475D2009781FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A71F69B11C7475D2009781FB /* Main.storyboard */; };
+		A71F69B51C7475D2009781FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A71F69B41C7475D2009781FB /* Assets.xcassets */; };
+		A71F69B81C7475D2009781FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A71F69B61C7475D2009781FB /* LaunchScreen.storyboard */; };
+		A71F69C31C7475D2009781FB /* DemoSocketUploadFileTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69C21C7475D2009781FB /* DemoSocketUploadFileTests.m */; };
+		A71F69CE1C7475D2009781FB /* DemoSocketUploadFileUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69CD1C7475D2009781FB /* DemoSocketUploadFileUITests.m */; };
+		A71F69DD1C7477DD009781FB /* SYSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69DC1C7477DD009781FB /* SYSocket.m */; };
+		A71F69E81C74780B009781FB /* AsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69E01C74780B009781FB /* AsyncSocket.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		A71F69E91C74780B009781FB /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69E21C74780B009781FB /* AsyncUdpSocket.m */; };
+		A71F69EA1C74780B009781FB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69E51C74780B009781FB /* GCDAsyncSocket.m */; };
+		A71F69EB1C74780B009781FB /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69E71C74780B009781FB /* GCDAsyncUdpSocket.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A71F69BF1C7475D2009781FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A71F699D1C7475D1009781FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A71F69A41C7475D1009781FB;
+			remoteInfo = DemoSocketUploadFile;
+		};
+		A71F69CA1C7475D2009781FB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A71F699D1C7475D1009781FB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A71F69A41C7475D1009781FB;
+			remoteInfo = DemoSocketUploadFile;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A71F69A51C7475D1009781FB /* DemoSocketUploadFile.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DemoSocketUploadFile.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A71F69A91C7475D2009781FB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A71F69AB1C7475D2009781FB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A71F69AC1C7475D2009781FB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A71F69AE1C7475D2009781FB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A71F69AF1C7475D2009781FB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A71F69B21C7475D2009781FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A71F69B41C7475D2009781FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A71F69B71C7475D2009781FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A71F69B91C7475D2009781FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A71F69BE1C7475D2009781FB /* DemoSocketUploadFileTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoSocketUploadFileTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A71F69C21C7475D2009781FB /* DemoSocketUploadFileTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoSocketUploadFileTests.m; sourceTree = "<group>"; };
+		A71F69C41C7475D2009781FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A71F69C91C7475D2009781FB /* DemoSocketUploadFileUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DemoSocketUploadFileUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A71F69CD1C7475D2009781FB /* DemoSocketUploadFileUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DemoSocketUploadFileUITests.m; sourceTree = "<group>"; };
+		A71F69CF1C7475D2009781FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A71F69DB1C7477DD009781FB /* SYSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SYSocket.h; sourceTree = "<group>"; };
+		A71F69DC1C7477DD009781FB /* SYSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SYSocket.m; sourceTree = "<group>"; };
+		A71F69DF1C74780B009781FB /* AsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncSocket.h; sourceTree = "<group>"; };
+		A71F69E01C74780B009781FB /* AsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncSocket.m; sourceTree = "<group>"; };
+		A71F69E11C74780B009781FB /* AsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AsyncUdpSocket.h; sourceTree = "<group>"; };
+		A71F69E21C74780B009781FB /* AsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AsyncUdpSocket.m; sourceTree = "<group>"; };
+		A71F69E41C74780B009781FB /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
+		A71F69E51C74780B009781FB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
+		A71F69E61C74780B009781FB /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
+		A71F69E71C74780B009781FB /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A71F69A21C7475D1009781FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A71F69BB1C7475D2009781FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A71F69C61C7475D2009781FB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A71F699C1C7475D1009781FB = {
+			isa = PBXGroup;
+			children = (
+				A71F69A71C7475D1009781FB /* DemoSocketUploadFile */,
+				A71F69C11C7475D2009781FB /* DemoSocketUploadFileTests */,
+				A71F69CC1C7475D2009781FB /* DemoSocketUploadFileUITests */,
+				A71F69A61C7475D1009781FB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A71F69A61C7475D1009781FB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A71F69A51C7475D1009781FB /* DemoSocketUploadFile.app */,
+				A71F69BE1C7475D2009781FB /* DemoSocketUploadFileTests.xctest */,
+				A71F69C91C7475D2009781FB /* DemoSocketUploadFileUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A71F69A71C7475D1009781FB /* DemoSocketUploadFile */ = {
+			isa = PBXGroup;
+			children = (
+				A71F69AB1C7475D2009781FB /* AppDelegate.h */,
+				A71F69AC1C7475D2009781FB /* AppDelegate.m */,
+				A71F69AE1C7475D2009781FB /* ViewController.h */,
+				A71F69AF1C7475D2009781FB /* ViewController.m */,
+				A71F69DB1C7477DD009781FB /* SYSocket.h */,
+				A71F69DC1C7477DD009781FB /* SYSocket.m */,
+				A71F69DE1C74780B009781FB /* AsyncSocket */,
+				A71F69E31C74780B009781FB /* GCDAsyncSocket */,
+				A71F69B11C7475D2009781FB /* Main.storyboard */,
+				A71F69B41C7475D2009781FB /* Assets.xcassets */,
+				A71F69B61C7475D2009781FB /* LaunchScreen.storyboard */,
+				A71F69B91C7475D2009781FB /* Info.plist */,
+				A71F69A81C7475D2009781FB /* Supporting Files */,
+			);
+			path = DemoSocketUploadFile;
+			sourceTree = "<group>";
+		};
+		A71F69A81C7475D2009781FB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A71F69A91C7475D2009781FB /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A71F69C11C7475D2009781FB /* DemoSocketUploadFileTests */ = {
+			isa = PBXGroup;
+			children = (
+				A71F69C21C7475D2009781FB /* DemoSocketUploadFileTests.m */,
+				A71F69C41C7475D2009781FB /* Info.plist */,
+			);
+			path = DemoSocketUploadFileTests;
+			sourceTree = "<group>";
+		};
+		A71F69CC1C7475D2009781FB /* DemoSocketUploadFileUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A71F69CD1C7475D2009781FB /* DemoSocketUploadFileUITests.m */,
+				A71F69CF1C7475D2009781FB /* Info.plist */,
+			);
+			path = DemoSocketUploadFileUITests;
+			sourceTree = "<group>";
+		};
+		A71F69DE1C74780B009781FB /* AsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				A71F69DF1C74780B009781FB /* AsyncSocket.h */,
+				A71F69E01C74780B009781FB /* AsyncSocket.m */,
+				A71F69E11C74780B009781FB /* AsyncUdpSocket.h */,
+				A71F69E21C74780B009781FB /* AsyncUdpSocket.m */,
+			);
+			path = AsyncSocket;
+			sourceTree = "<group>";
+		};
+		A71F69E31C74780B009781FB /* GCDAsyncSocket */ = {
+			isa = PBXGroup;
+			children = (
+				A71F69E41C74780B009781FB /* GCDAsyncSocket.h */,
+				A71F69E51C74780B009781FB /* GCDAsyncSocket.m */,
+				A71F69E61C74780B009781FB /* GCDAsyncUdpSocket.h */,
+				A71F69E71C74780B009781FB /* GCDAsyncUdpSocket.m */,
+			);
+			path = GCDAsyncSocket;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A71F69A41C7475D1009781FB /* DemoSocketUploadFile */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A71F69D21C7475D2009781FB /* Build configuration list for PBXNativeTarget "DemoSocketUploadFile" */;
+			buildPhases = (
+				A71F69A11C7475D1009781FB /* Sources */,
+				A71F69A21C7475D1009781FB /* Frameworks */,
+				A71F69A31C7475D1009781FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = DemoSocketUploadFile;
+			productName = DemoSocketUploadFile;
+			productReference = A71F69A51C7475D1009781FB /* DemoSocketUploadFile.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A71F69BD1C7475D2009781FB /* DemoSocketUploadFileTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A71F69D51C7475D2009781FB /* Build configuration list for PBXNativeTarget "DemoSocketUploadFileTests" */;
+			buildPhases = (
+				A71F69BA1C7475D2009781FB /* Sources */,
+				A71F69BB1C7475D2009781FB /* Frameworks */,
+				A71F69BC1C7475D2009781FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A71F69C01C7475D2009781FB /* PBXTargetDependency */,
+			);
+			name = DemoSocketUploadFileTests;
+			productName = DemoSocketUploadFileTests;
+			productReference = A71F69BE1C7475D2009781FB /* DemoSocketUploadFileTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		A71F69C81C7475D2009781FB /* DemoSocketUploadFileUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A71F69D81C7475D2009781FB /* Build configuration list for PBXNativeTarget "DemoSocketUploadFileUITests" */;
+			buildPhases = (
+				A71F69C51C7475D2009781FB /* Sources */,
+				A71F69C61C7475D2009781FB /* Frameworks */,
+				A71F69C71C7475D2009781FB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A71F69CB1C7475D2009781FB /* PBXTargetDependency */,
+			);
+			name = DemoSocketUploadFileUITests;
+			productName = DemoSocketUploadFileUITests;
+			productReference = A71F69C91C7475D2009781FB /* DemoSocketUploadFileUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A71F699D1C7475D1009781FB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = zhangshaoyu;
+				TargetAttributes = {
+					A71F69A41C7475D1009781FB = {
+						CreatedOnToolsVersion = 7.1.1;
+					};
+					A71F69BD1C7475D2009781FB = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = A71F69A41C7475D1009781FB;
+					};
+					A71F69C81C7475D2009781FB = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = A71F69A41C7475D1009781FB;
+					};
+				};
+			};
+			buildConfigurationList = A71F69A01C7475D1009781FB /* Build configuration list for PBXProject "DemoSocketUploadFile" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A71F699C1C7475D1009781FB;
+			productRefGroup = A71F69A61C7475D1009781FB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A71F69A41C7475D1009781FB /* DemoSocketUploadFile */,
+				A71F69BD1C7475D2009781FB /* DemoSocketUploadFileTests */,
+				A71F69C81C7475D2009781FB /* DemoSocketUploadFileUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A71F69A31C7475D1009781FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71F69B81C7475D2009781FB /* LaunchScreen.storyboard in Resources */,
+				A71F69B51C7475D2009781FB /* Assets.xcassets in Resources */,
+				A71F69B31C7475D2009781FB /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A71F69BC1C7475D2009781FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A71F69C71C7475D2009781FB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A71F69A11C7475D1009781FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71F69B01C7475D2009781FB /* ViewController.m in Sources */,
+				A71F69E81C74780B009781FB /* AsyncSocket.m in Sources */,
+				A71F69AD1C7475D2009781FB /* AppDelegate.m in Sources */,
+				A71F69E91C74780B009781FB /* AsyncUdpSocket.m in Sources */,
+				A71F69EB1C74780B009781FB /* GCDAsyncUdpSocket.m in Sources */,
+				A71F69DD1C7477DD009781FB /* SYSocket.m in Sources */,
+				A71F69EA1C74780B009781FB /* GCDAsyncSocket.m in Sources */,
+				A71F69AA1C7475D2009781FB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A71F69BA1C7475D2009781FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71F69C31C7475D2009781FB /* DemoSocketUploadFileTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A71F69C51C7475D2009781FB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A71F69CE1C7475D2009781FB /* DemoSocketUploadFileUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A71F69C01C7475D2009781FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A71F69A41C7475D1009781FB /* DemoSocketUploadFile */;
+			targetProxy = A71F69BF1C7475D2009781FB /* PBXContainerItemProxy */;
+		};
+		A71F69CB1C7475D2009781FB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A71F69A41C7475D1009781FB /* DemoSocketUploadFile */;
+			targetProxy = A71F69CA1C7475D2009781FB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A71F69B11C7475D2009781FB /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A71F69B21C7475D2009781FB /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A71F69B61C7475D2009781FB /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A71F69B71C7475D2009781FB /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A71F69D01C7475D2009781FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A71F69D11C7475D2009781FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A71F69D31C7475D2009781FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DemoSocketUploadFile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.365sji.DemoSocketUploadFile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A71F69D41C7475D2009781FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = DemoSocketUploadFile/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.365sji.DemoSocketUploadFile;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A71F69D61C7475D2009781FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DemoSocketUploadFileTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.365sji.DemoSocketUploadFileTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoSocketUploadFile.app/DemoSocketUploadFile";
+			};
+			name = Debug;
+		};
+		A71F69D71C7475D2009781FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = DemoSocketUploadFileTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.365sji.DemoSocketUploadFileTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DemoSocketUploadFile.app/DemoSocketUploadFile";
+			};
+			name = Release;
+		};
+		A71F69D91C7475D2009781FB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DemoSocketUploadFileUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.365sji.DemoSocketUploadFileUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DemoSocketUploadFile;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		A71F69DA1C7475D2009781FB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = DemoSocketUploadFileUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.365sji.DemoSocketUploadFileUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = DemoSocketUploadFile;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A71F69A01C7475D1009781FB /* Build configuration list for PBXProject "DemoSocketUploadFile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A71F69D01C7475D2009781FB /* Debug */,
+				A71F69D11C7475D2009781FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A71F69D21C7475D2009781FB /* Build configuration list for PBXNativeTarget "DemoSocketUploadFile" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A71F69D31C7475D2009781FB /* Debug */,
+				A71F69D41C7475D2009781FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A71F69D51C7475D2009781FB /* Build configuration list for PBXNativeTarget "DemoSocketUploadFileTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A71F69D61C7475D2009781FB /* Debug */,
+				A71F69D71C7475D2009781FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A71F69D81C7475D2009781FB /* Build configuration list for PBXNativeTarget "DemoSocketUploadFileUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A71F69D91C7475D2009781FB /* Debug */,
+				A71F69DA1C7475D2009781FB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A71F699D1C7475D1009781FB /* Project object */;
+}
