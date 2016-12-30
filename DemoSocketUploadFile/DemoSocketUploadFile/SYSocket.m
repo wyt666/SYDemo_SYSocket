@@ -10,6 +10,16 @@
 #import "AsyncSocket.h"
 #import "GCDAsyncSocket.h"
 
+/// 掉线类型（服务端掉线，或用户主动退出）
+typedef NS_ENUM(NSInteger, SocketDisconnectType)
+{
+    /// 服务器掉线，默认为0
+    SocketOfflineByServer = 0,
+    
+    /// 用户主动cut
+    SocketOfflineByUser = 1
+};
+
 unsigned long long OffSet = 1024 * 200;
 
 static NSInteger const timeWithout = -1;
@@ -20,6 +30,9 @@ static NSString *const keyOffset = @"keyOffset";
 static NSString *const keySouceId = @"keySouceId";
 
 @interface SYSocket () <AsyncSocketDelegate, GCDAsyncSocketDelegate>
+
+/// 掉线类型
+@property (nonatomic, assign) SocketDisconnectType disconnecType;
 
 @property (nonatomic, strong) GCDAsyncSocket *GCDSocket;
 @property (nonatomic, strong) AsyncSocket *socket;  // socket
@@ -68,6 +81,9 @@ static NSString *const keySouceId = @"keySouceId";
         return;
     }
     
+    NSAssert(host != nil, @"host must be not nil");
+    NSAssert(self.filePath != nil, @"filePath must be not nil");
+    
     self.socketHost = host;
     self.socketPort = port;
     
@@ -106,11 +122,15 @@ static NSString *const keySouceId = @"keySouceId";
     
     self.isUploadHead = YES;
     
+    // 获取已经上传完成的记录
     NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:keyOffset];
     self.currentOffset = number.longLongValue;
 //    self.currentOffset = 0;
     
+    // 实例化AsyncSocket
     self.socket = [[AsyncSocket alloc] initWithDelegate:self];
+    
+    // 连接服务器
     NSError *error = nil;
     [self.socket connectToHost:self.socketHost onPort:self.socketPort withTimeout:timeWithout error:&error];
 }
@@ -189,12 +209,12 @@ static NSString *const keySouceId = @"keySouceId";
 
 #pragma mark - timer
 
-- (void)startTimer:(BOOL)isGCD
+- (void)startTimer:(BOOL)isGCDSocket
 {
-    [self uploadFileData:isGCD];
+    [self uploadFileData:isGCDSocket];
 }
 
-- (void)stopTimer:(BOOL)isGCD
+- (void)stopTimer:(BOOL)isGCDSocket
 {
     if (self.fileHandle)
     {
@@ -202,7 +222,7 @@ static NSString *const keySouceId = @"keySouceId";
         self.fileHandle = nil;
     }
     
-    if (isGCD)
+    if (isGCDSocket)
     {
         if (self.GCDSocket)
         {
@@ -232,6 +252,7 @@ static NSString *const keySouceId = @"keySouceId";
     
     self.isUploadHead = NO;
     
+    // 保存上传记录
     NSNumber *number = [NSNumber numberWithLongLong:self.currentOffset];
     [[NSUserDefaults standardUserDefaults] setObject:number forKey:keyOffset];
     [[NSUserDefaults standardUserDefaults] synchronize];
@@ -291,17 +312,19 @@ static NSString *const keySouceId = @"keySouceId";
 }
 
 // 上传文件
-- (void)uploadFileData:(BOOL)isGCD
+- (void)uploadFileData:(BOOL)isGCDSocket
 {
     if (self.isUploadHead)
     {
+        // 继续上传
         // 判断文件是否已有上传记录
         self.fileSouceId = [[NSUserDefaults standardUserDefaults] objectForKey:keySouceId];
         // 构造拼接协议
         NSString *headStr = [[NSString alloc] initWithFormat:@"Content-Length=%llu;filename=%@;sourceid=%@\r\n", self.filelength, self.fileName, ((self.fileSouceId && 0 < self.fileSouceId.length) ? self.fileSouceId : @"")];
         NSData *headData = [headStr dataUsingEncoding:NSUTF8StringEncoding];
-        if (isGCD)
+        if (isGCDSocket)
         {
+            // 向服务器发送数据
             [self.GCDSocket writeData:headData withTimeout:timeWithout tag:tagWriteData];
             
             // 获取服务端返回数据
@@ -309,6 +332,7 @@ static NSString *const keySouceId = @"keySouceId";
         }
         else
         {
+            // 向服务器发送数据
             [self.socket writeData:headData withTimeout:timeWithout tag:tagWriteData];
             
             // 获取服务端返回数据
@@ -320,6 +344,7 @@ static NSString *const keySouceId = @"keySouceId";
     }
     else
     {
+        // 第一次上传
         if (!self.fileHandle)
         {
             self.fileHandle = [NSFileHandle fileHandleForReadingAtPath:self.filePath];
@@ -335,12 +360,14 @@ static NSString *const keySouceId = @"keySouceId";
                 [self.fileHandle seekToFileOffset:self.currentOffset];
                 self.currentOffset += OffSet;
                 NSData *bodyData = [self.fileHandle readDataOfLength:self.currentOffset];
-                if (isGCD)
+                if (isGCDSocket)
                 {
+                    // 向服务器发送数据
                     [self.GCDSocket writeData:bodyData withTimeout:timeWithout tag:tagWriteData];
                 }
                 else
                 {
+                    // 向服务器发送数据
                     [self.socket writeData:bodyData withTimeout:timeWithout tag:tagWriteData];
                 }
 
@@ -349,7 +376,7 @@ static NSString *const keySouceId = @"keySouceId";
             else
             {
                 // 停止上传，即上传完成
-                [self stopTimer:isGCD];
+                [self stopTimer:isGCDSocket];
             }
         }
     }
@@ -364,19 +391,25 @@ static NSString *const keySouceId = @"keySouceId";
         return;
     }
     
+    NSAssert(host != nil, @"host must be not nil");
+    NSAssert(self.filePath != nil, @"filePath must be not nil");
+    
     self.socketHost = host;
     self.socketPort = port;
     
     self.isUploadHead = YES;
     
+    // 获取已经上传完成的记录点
     NSNumber *number = [[NSUserDefaults standardUserDefaults] objectForKey:keyOffset];
     self.currentOffset = number.longLongValue;
 //    self.currentOffset = 0;
     
+    // 创建GCDSocket
     // Create our GCDAsyncSocket instance.
     // dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0) dispatch_get_main_queue()
     self.GCDSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
     
+    // 连接服务器
     // Now we tell the ASYNCHRONOUS socket to connect.
     NSError *error = nil;
     if (![self.GCDSocket connectToHost:self.socketHost onPort:self.socketPort error:&error])
@@ -391,6 +424,7 @@ static NSString *const keySouceId = @"keySouceId";
 
 - (void)GCDSocketDisconnect
 {
+    // 结束上传
     [self stopTimer:YES];
 }
 
@@ -408,6 +442,7 @@ static NSString *const keySouceId = @"keySouceId";
 {
     NSLog(@"1 didConnectToHost:%@ port:%hu", host, port);
 
+    // 开始上传
     [self startTimer:YES];
 }
 
@@ -425,6 +460,7 @@ static NSString *const keySouceId = @"keySouceId";
 - (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
 {
     NSLog(@"4 didWriteDataWithTag:");
+    
     
     if (tagWriteData == tag)
     {

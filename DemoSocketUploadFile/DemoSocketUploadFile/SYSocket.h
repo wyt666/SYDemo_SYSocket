@@ -8,34 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
-/// 掉线类型（服务端掉线，或用户主动退出）
-typedef NS_ENUM(NSInteger, SocketDisconnectType)
-{
-    /// 服务器掉线，默认为0
-    SocketOfflineByServer = 0,
-    
-    /// 用户主动cut
-    SocketOfflineByUser = 1
-};
-
 @interface SYSocket : NSObject
 
-/// 掉线类型
-@property (nonatomic, assign) SocketDisconnectType disconnecType;
 
-/// 文件路径
+/// 文件路径（先设置要上传的文件路径，然后再连接服务器进行上传）
 @property (nonatomic, copy) NSString *filePath;
 
 /// 单例
 + (SYSocket *)sharedSocket;
 
-/// socket连接
+/// socket连接（先设置要上传的文件路径，然后再连接服务器进行上传）
 - (void)socketConnectWithHost:(NSString *)host port:(UInt16)port;
 
 /// socket连接断开
 - (void)socketDisconnect;
 
-/// GCDSocket连接
+/// GCDSocket连接（先设置要上传的文件路径，然后再连接服务器进行上传）
 - (void)GCDSocketConnectWithHost:(NSString *)host port:(UInt16)port;;
 
 /// GCDSocket连接断开
