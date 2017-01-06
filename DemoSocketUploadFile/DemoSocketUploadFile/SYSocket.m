@@ -138,7 +138,7 @@ static NSString *const keySouceId = @"keySouceId";
 // socket断开连接
 - (void)socketDisconnect
 {
-    [self stopTimer:NO];
+    [self stopTimerWithGCDSocket:NO];
 }
 
 #pragma mark - AsyncSocketDelegate
@@ -153,7 +153,7 @@ static NSString *const keySouceId = @"keySouceId";
     
     // 每隔30s像服务器发送心跳包
     // 在longConnectToSocket方法中进行长连接需要向服务器发送的讯息
-    [self startTimer:NO];
+    [self startTimerWithGCDSocket:NO];
 }
 
 // 重连
@@ -179,22 +179,24 @@ static NSString *const keySouceId = @"keySouceId";
     // 对得到的data值进行解析与转换即可
     [self fileInfoWithData:data];
     
-//    if (tagReadData == tag)
-//    {
-//        // 对得到的data值进行解析与转换即可
-//        NSString *receiveStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
-//        NSLog(@"receiveStr %@", receiveStr);
-//        NSArray *receiveArray = [receiveStr componentsSeparatedByString:@";"];
-//        NSString *sourceid = [receiveArray firstObject];
-//        NSRange rangeSource = [sourceid rangeOfString:@"sourceid="];
-//        self.fileSouceId = [sourceid substringFromIndex:(rangeSource.location + rangeSource.length)];
-//        
-//        NSString *position = [receiveArray lastObject];
-//        NSRange rangePosition = [position rangeOfString:@"position="];
-//        self.currentOffset = [position substringFromIndex:(rangePosition.location + rangePosition.length)].integerValue;
-//        
-//        [self startTimer:NO];
-//    }
+    /*
+    if (tagReadData == tag)
+    {
+        // 对得到的data值进行解析与转换即可
+        NSString *receiveStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"receiveStr %@", receiveStr);
+        NSArray *receiveArray = [receiveStr componentsSeparatedByString:@";"];
+        NSString *sourceid = [receiveArray firstObject];
+        NSRange rangeSource = [sourceid rangeOfString:@"sourceid="];
+        self.fileSouceId = [sourceid substringFromIndex:(rangeSource.location + rangeSource.length)];
+        
+        NSString *position = [receiveArray lastObject];
+        NSRange rangePosition = [position rangeOfString:@"position="];
+        self.currentOffset = [position substringFromIndex:(rangePosition.location + rangePosition.length)].integerValue;
+        
+        [self startTimer:NO];
+    }
+    */
 }
 
 - (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag
@@ -203,18 +205,18 @@ static NSString *const keySouceId = @"keySouceId";
     
     if (tagWriteData == tag)
     {
-        [self startTimer:NO];
+        [self startTimerWithGCDSocket:NO];
     }
 }
 
 #pragma mark - timer
 
-- (void)startTimer:(BOOL)isGCDSocket
+- (void)startTimerWithGCDSocket:(BOOL)isGCDSocket
 {
-    [self uploadFileData:isGCDSocket];
+    [self uploadFileDataWithGCDSocket:isGCDSocket];
 }
 
-- (void)stopTimer:(BOOL)isGCDSocket
+- (void)stopTimerWithGCDSocket:(BOOL)isGCDSocket
 {
     if (self.fileHandle)
     {
@@ -293,7 +295,7 @@ static NSString *const keySouceId = @"keySouceId";
     return _fileName;
 }
 
-// 对得到的data值进行解析与转换即可
+// 对得到的data值进行解析与转换即可（根据实际情况进行修改）
 - (void)fileInfoWithData:(NSData *)data
 {
     // 对得到的data值进行解析与转换即可
@@ -312,14 +314,13 @@ static NSString *const keySouceId = @"keySouceId";
 }
 
 // 上传文件
-- (void)uploadFileData:(BOOL)isGCDSocket
+- (void)uploadFileDataWithGCDSocket:(BOOL)isGCDSocket
 {
     if (self.isUploadHead)
     {
-        // 继续上传
-        // 判断文件是否已有上传记录
+        // 上传头文件协议（第一次调用时，且上传完成后则开始上传文件）
         self.fileSouceId = [[NSUserDefaults standardUserDefaults] objectForKey:keySouceId];
-        // 构造拼接协议
+        // 构造拼接协议（根据实际情况进行修改）
         NSString *headStr = [[NSString alloc] initWithFormat:@"Content-Length=%llu;filename=%@;sourceid=%@\r\n", self.filelength, self.fileName, ((self.fileSouceId && 0 < self.fileSouceId.length) ? self.fileSouceId : @"")];
         NSData *headData = [headStr dataUsingEncoding:NSUTF8StringEncoding];
         if (isGCDSocket)
@@ -344,7 +345,7 @@ static NSString *const keySouceId = @"keySouceId";
     }
     else
     {
-        // 第一次上传
+        // 上传文件信息
         if (!self.fileHandle)
         {
             self.fileHandle = [NSFileHandle fileHandleForReadingAtPath:self.filePath];
@@ -357,8 +358,10 @@ static NSString *const keySouceId = @"keySouceId";
             {
                 NSLog(@"currentOffset %llu", self.currentOffset);
                 
+                // 读取文件偏移量
                 [self.fileHandle seekToFileOffset:self.currentOffset];
                 self.currentOffset += OffSet;
+                // 根据文件偏移量，读取文件信息
                 NSData *bodyData = [self.fileHandle readDataOfLength:self.currentOffset];
                 if (isGCDSocket)
                 {
@@ -376,7 +379,7 @@ static NSString *const keySouceId = @"keySouceId";
             else
             {
                 // 停止上传，即上传完成
-                [self stopTimer:isGCDSocket];
+                [self stopTimerWithGCDSocket:isGCDSocket];
             }
         }
     }
@@ -425,7 +428,7 @@ static NSString *const keySouceId = @"keySouceId";
 - (void)GCDSocketDisconnect
 {
     // 结束上传
-    [self stopTimer:YES];
+    [self stopTimerWithGCDSocket:YES];
 }
 
 #pragma mark GCDAsyncSocketDelegate
@@ -443,7 +446,7 @@ static NSString *const keySouceId = @"keySouceId";
     NSLog(@"1 didConnectToHost:%@ port:%hu", host, port);
 
     // 开始上传
-    [self startTimer:YES];
+    [self startTimerWithGCDSocket:YES];
 }
 
 - (void)socket:(GCDAsyncSocket *)sock didReceiveTrust:(SecTrustRef)trust completionHandler:(void (^)(BOOL shouldTrustPeer))completionHandler
@@ -464,7 +467,7 @@ static NSString *const keySouceId = @"keySouceId";
     
     if (tagWriteData == tag)
     {
-        [self startTimer:YES];
+        [self startTimerWithGCDSocket:YES];
     }
 }
 
