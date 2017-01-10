@@ -20,6 +20,7 @@
 		A71F69E91C74780B009781FB /* AsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69E21C74780B009781FB /* AsyncUdpSocket.m */; };
 		A71F69EA1C74780B009781FB /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69E51C74780B009781FB /* GCDAsyncSocket.m */; };
 		A71F69EB1C74780B009781FB /* GCDAsyncUdpSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = A71F69E71C74780B009781FB /* GCDAsyncUdpSocket.m */; };
+		A7D45BD51E1F9B2D002DE6DC /* text.txt in Resources */ = {isa = PBXBuildFile; fileRef = A7D45BD41E1F9B2D002DE6DC /* text.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 		A71F69E51C74780B009781FB /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		A71F69E61C74780B009781FB /* GCDAsyncUdpSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncUdpSocket.h; sourceTree = "<group>"; };
 		A71F69E71C74780B009781FB /* GCDAsyncUdpSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncUdpSocket.m; sourceTree = "<group>"; };
+		A7D45BD41E1F9B2D002DE6DC /* text.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = text.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				A71F69AC1C7475D2009781FB /* AppDelegate.m */,
 				A71F69AE1C7475D2009781FB /* ViewController.h */,
 				A71F69AF1C7475D2009781FB /* ViewController.m */,
+				A7D45BD41E1F9B2D002DE6DC /* text.txt */,
 				A71F69DB1C7477DD009781FB /* SYSocket.h */,
 				A71F69DC1C7477DD009781FB /* SYSocket.m */,
 				A71F69DE1C74780B009781FB /* AsyncSocket */,
@@ -286,6 +289,7 @@
 			files = (
 				A71F69B81C7475D2009781FB /* LaunchScreen.storyboard in Resources */,
 				A71F69B51C7475D2009781FB /* Assets.xcassets in Resources */,
+				A7D45BD51E1F9B2D002DE6DC /* text.txt in Resources */,
 				A71F69B31C7475D2009781FB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

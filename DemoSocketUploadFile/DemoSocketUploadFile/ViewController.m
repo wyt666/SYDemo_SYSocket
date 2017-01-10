@@ -39,10 +39,17 @@
 
 - (void)socketStart:(UIButton *)button
 {
-    // 设置IP地址
-    NSString *host = @"192.168.54.160";
+//    // 设置IP地址
+//    NSString *host = @"192.168.54.160";
+//    // 设置端口
+//    UInt16 port = 7876;
+    
+    // 设置IP地址 http://vcloud.mytaoyuan.com:7878
+    NSString *host = @"58.57.65.11";
     // 设置端口
-    UInt16 port = 7876;
+    UInt16 port = 7878;
+    
+    
     // 设置文件路径
     NSString *filePaht = [[NSBundle mainBundle] pathForResource:@"text" ofType:@"txt"];
 //    NSString *filePaht = [[NSBundle mainBundle] pathForResource:@"dawan" ofType:@"mp4"];

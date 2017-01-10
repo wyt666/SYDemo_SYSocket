@@ -10,6 +10,8 @@
 #import "AsyncSocket.h"
 #import "GCDAsyncSocket.h"
 
+#import "AppDelegate.h"
+
 /// 掉线类型（服务端掉线，或用户主动退出）
 typedef NS_ENUM(NSInteger, SocketDisconnectType)
 {
@@ -321,7 +323,8 @@ static NSString *const keySouceId = @"keySouceId";
         // 上传头文件协议（第一次调用时，且上传完成后则开始上传文件）
         self.fileSouceId = [[NSUserDefaults standardUserDefaults] objectForKey:keySouceId];
         // 构造拼接协议（根据实际情况进行修改）
-        NSString *headStr = [[NSString alloc] initWithFormat:@"Content-Length=%llu;filename=%@;sourceid=%@\r\n", self.filelength, self.fileName, ((self.fileSouceId && 0 < self.fileSouceId.length) ? self.fileSouceId : @"")];
+//        NSString *headStr = [[NSString alloc] initWithFormat:@"Content-Length=%llu;filename=%@;sourceid=%@\r\n", self.filelength, self.fileName, ((self.fileSouceId && 0 < self.fileSouceId.length) ? self.fileSouceId : @"")];
+         NSString *headStr = [[NSString alloc] initWithFormat:@"Content-Length=%llu;filename=%@;sourceid=%@;uploadType=2;uploadDir=56;userId=21\r\n", self.filelength, self.fileName, ((self.fileSouceId && 0 < self.fileSouceId.length) ? self.fileSouceId : @"")];
         NSData *headData = [headStr dataUsingEncoding:NSUTF8StringEncoding];
         if (isGCDSocket)
         {
@@ -361,8 +364,8 @@ static NSString *const keySouceId = @"keySouceId";
                 // 读取文件偏移量
                 [self.fileHandle seekToFileOffset:self.currentOffset];
                 self.currentOffset += OffSet;
-                // 根据文件偏移量，读取文件信息
-                NSData *bodyData = [self.fileHandle readDataOfLength:self.currentOffset];
+                // 根据文件偏移量，读取固定大小的文件信息
+                NSData *bodyData = [self.fileHandle readDataOfLength:OffSet];
                 if (isGCDSocket)
                 {
                     // 向服务器发送数据
@@ -422,11 +425,15 @@ static NSString *const keySouceId = @"keySouceId";
     else
     {
         NSLog(@"Connecting to \"%@\" on port %hu...", self.socketHost, self.socketPort);
+        
+        [self showNetworkStatus:YES];
     }
 }
 
 - (void)GCDSocketDisconnect
 {
+    [self showNetworkStatus:NO];
+    
     // 结束上传
     [self stopTimerWithGCDSocket:YES];
 }
@@ -480,6 +487,13 @@ static NSString *const keySouceId = @"keySouceId";
         // 对得到的data值进行解析与转换即可
         [self fileInfoWithData:data];
     }
+}
+
+#pragma mark - 网络状态
+
+- (void)showNetworkStatus:(BOOL)isShow
+{
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = isShow;
 }
 
 @end
